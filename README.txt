@@ -1,12 +1,7 @@
-John M. Clark
-9/20/2016
-EPA/ORISE
-
-This directory contains instructions, R code, and data for "An approach to monitoring cyanobacteria blooms 
-at surface drinking water intakes using satellite imagery". See manuscript for details. 
+This code documents a project concluded in 2016. Just dusting it off a bit.
 
 Directory structure:
-JClark_CyAN_2016_final/
+cyanohabs/
 	bloomrs/ - r functions developed for this study
 	input_data/ - source and preprocessed intermediary spatial data
 	manuscript/ - text and figures
@@ -16,10 +11,10 @@ JClark_CyAN_2016_final/
 	packrat/ - source files for R package versions required by this analysis
 	supporting_documents/
 	
-The R code will ultimately be combined into an R package, 'bloomrs', but is currently a collection of discrete 
-R scripts. The analysis has been structured into three stages.  Subsequent stages may require data inputs from 
-preceding stages.  Example intermediary outputs have been provided in "input_data" to allow users to bypass 
-earlier processing stages.
+Portions of the R code may ultimately be combined into an R package, 'bloomrs', but is currently a collection of 
+discrete R scripts. The analysis has been structured into three stages.  Subsequent stages may require data 
+inputs from preceding stages.  Example intermediary outputs have been provided in "input_data" to allow users to 
+bypass earlier processing stages.
 
 Analysis stages:
 1.) estimate_spatial_coverage.R
