@@ -6,8 +6,6 @@ crs.alb <- CRS("+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y
 source("bloomrs/R/geotiff_metadata.R")
 oh.cicyano <- readGTiffBrick("input_data/oh_cicyano_weekly_mask.tif")
 fl.cicyano <- readGTiffBrick("input_data/fl_cicyano_weekly_mask.tif")
-nhd.wb <- shapefile("input_data/nhd_nla_subset_shore_dist.shp")
-nhd.huc12 <- shapefile("input_data/nhd_huc12.shp")
 meris.regions <- shapefile("input_data/meris_regions.shp")
 
 # Prepare POI (PWSI) point data -------------------------------------------
@@ -40,17 +38,24 @@ pws <- shapefile("input_data/simulated_pws.shp")
 
 
 # Subset NHD shapefiles ---------------------------------------------------
+# 
+# nhd.wb <- shapefile("input_data/nhd_nla_subset_shore_dist.shp")
+# nhd.huc12 <- shapefile("input_data/nhd_huc12.shp")
+# 
+# fl.nhd.wb <- nhd.wb[meris.regions[meris.regions$region == "Florida", ], ]
+# fl.nhd.huc12 <- nhd.huc12[meris.regions[meris.regions$region == "Florida", ], ]
+# 
+# oh.nhd.wb <- nhd.wb[meris.regions[meris.regions$region == "Ohio", ], ]
+# oh.nhd.huc12 <- nhd.huc12[meris.regions[meris.regions$region == "Ohio", ], ]
+# 
+# rm(nhd.wb)
+# rm(nhd.huc12)
 
-fl.nhd.wb <- nhd.wb[meris.regions[meris.regions$region == "Florida", ], ]
-fl.nhd.huc12 <- nhd.huc12[meris.regions[meris.regions$region == "Florida", ], ]
+fl.nhd.wb <- shapefile("input_data/fl_nhd_wb.shp")
+fl.nhd.huc12 <- shapefile("input_data/fl_nhd_huck12.shp")
 
-oh.nhd.wb <- nhd.wb[meris.regions[meris.regions$region == "Ohio", ], ]
-oh.nhd.huc12 <- nhd.huc12[meris.regions[meris.regions$region == "Ohio", ], ]
-
-region.nhd.wb <- rbind(fl.nhd.wb, oh.nhd.wb)
-region.nhd.huc12 <- rbind(fl.nhd.huc12, oh.nhd.huc12)
-rm(nhd.wb)
-rm(nhd.huc12)
+oh.nhd.wb <- shapefile("input_data/oh_nhd_wb.shp")
+oh.nhd.huc12 <- shapefile("input_data/oh_nhd_huck12.shp")
 
 # Extract POIs ------------------------------------------------------------
 source("bloomrs/R/gen_candidate_points.R")
